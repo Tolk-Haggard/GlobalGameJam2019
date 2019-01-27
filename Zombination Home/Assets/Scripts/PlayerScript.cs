@@ -6,7 +6,7 @@ using NDream.AirConsole;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    public Animation animation;
     public Rigidbody2D player;
     public float speed;
     public float jump;
@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
         else if (data["action"] != null && data["action"].ToString().Equals("down"))
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
+            animation.Play("Down", PlayMode.StopAll);
         }
     }
 
