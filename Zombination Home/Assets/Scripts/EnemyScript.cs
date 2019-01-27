@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     private GameObject target;
     public float speed;
+    private bool hitPlayer = false;
 
     void Start()
     {
@@ -26,6 +27,15 @@ public class EnemyScript : MonoBehaviour
             transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
 
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+       if (!hitPlayer) {
+           hitPlayer = true;
+
+           target.GetComponent<PlayerScript>().health -= 1;
+           
+       }
     }
 
 }

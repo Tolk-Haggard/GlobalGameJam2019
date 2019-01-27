@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1000545917004618506}
   m_Layer: 0
   m_Name: Enemy 3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,8 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdec97bc55e19344a0890ad45f306fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1535711012972110605, guid: 00d33157e622ea3408a80096b09b4964, type: 3}
-  target: {fileID: 1535711012972110600, guid: 00d33157e622ea3408a80096b09b4964, type: 3}
   speed: 3
 --- !u!95 &1000545917004618506
 Animator:

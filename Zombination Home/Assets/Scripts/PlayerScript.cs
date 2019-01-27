@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour
     public float jump;
     public bool WalkLeft = false;
     public int timer;
+    public int health = 3;
+    public GameObject enemy;
 
     void Start()
     {
@@ -55,14 +57,34 @@ public class PlayerScript : MonoBehaviour
         }
         
     }
+    void OnCollisionEnter2D(Collision2D col){
+
+        if (col.gameObject.tag == "House"){
+             Application.LoadLevel("YouWin");
+        }
+    }
 
     void Update()
     {
-        timer -= 1;
-        if(timer <= 0)
-        {
-            //animator.Play("Idle");
+        if (health <= 0){
+           Application.LoadLevel("YouDied");
         }
-        
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.position += Vector3.up * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.position += Vector3.down * speed * Time.deltaTime;
+        }
     }
 }
+

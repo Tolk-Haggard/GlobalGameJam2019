@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 695e4aefcba718240993cf2476731f1b
+  - enabled: 1
+    path: Assets/Scenes/YouWin.unity
+    guid: 29ce6de00efecef46b3a445ae89d494e
+  - enabled: 1
+    path: Assets/Scenes/YouDied.unity
+    guid: 2435c431c46ce0542bcc1d1ffb73545f
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: b33dbe68fff611a4799a8ba09739c6ea
+  - enabled: 1
+    path: Assets/Scenes/Explanation.unity
+    guid: 0006691d4ed8c30489ae9eb09cc34248
   m_configObjects: {}
