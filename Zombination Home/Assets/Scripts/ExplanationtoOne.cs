@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using NDream.AirConsole;
+using UnityEngine.SceneManagement;
 
 public class ExplanationtoOne : MonoBehaviour
 {
@@ -18,9 +19,9 @@ public class ExplanationtoOne : MonoBehaviour
 
     void OnMessage(int fromDeviceId, JToken data)
     {
-        Debug.Log("Message from " + fromDeviceId + ", Data: " + data);
-        Application.LoadLevel(1);
-        AirConsole.instance.onMessage -= OnMessage;
+        if (SceneManager.GetActiveScene().name == "Explanation") {
+          Application.LoadLevel(1);
+        }
     }
 }
 

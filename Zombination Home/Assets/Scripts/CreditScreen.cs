@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using NDream.AirConsole;
+using UnityEngine.SceneManagement;
 
 public class CreditScreen : MonoBehaviour
 {
@@ -18,8 +19,10 @@ public class CreditScreen : MonoBehaviour
 
     void OnMessage(int fromDeviceId, JToken data)
     {
-        Debug.Log("Message from " + fromDeviceId + ", Data: " + data);
-        Application.LoadLevel(4);
-        AirConsole.instance.onMessage -= OnMessage;
+       if (SceneManager.GetActiveScene().name == "YouWin" ||
+        SceneManager.GetActiveScene().name == "YouDied") {
+          Application.LoadLevel(4);
+        }
+        
     }
 }

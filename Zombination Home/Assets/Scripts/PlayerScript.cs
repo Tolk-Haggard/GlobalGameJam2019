@@ -12,8 +12,7 @@ public class PlayerScript : MonoBehaviour
     public float jump;
     public bool WalkLeft = false;
     public int timer;
-    public int health = 3;
-    public GameObject enemy;
+    public int health = 6;
 
     void Start()
     {
@@ -26,10 +25,18 @@ public class PlayerScript : MonoBehaviour
         AirConsole.instance.onMessage += OnMessage;
     }
 
+    void OnDestroy() {
+        AirConsole.instance.onMessage -= OnMessage;
+    }
+
     void OnMessage(int fromDeviceId, JToken data)
     {
         
-        Debug.Log("Message from " + fromDeviceId + ", Data: " + data);
+       if (player == null || animator == null) {
+       Debug.Log("PLAYER SCRIPT  was null Message from " + fromDeviceId + ", Data: " + data);
+              return;
+        }
+       
         if (data["action"] != null && data["action"].ToString().Equals("up"))
         {
             transform.position += Vector3.up * speed * Time.deltaTime;
@@ -41,7 +48,6 @@ public class PlayerScript : MonoBehaviour
             transform.position += Vector3.left * speed * Time.deltaTime;
             animator.Play("WalkLeft");
             timer = 5;
-            //WalkLeft = true;
         }
         else if (data["action"] != null && data["action"].ToString().Equals("right"))
         {
@@ -60,7 +66,7 @@ public class PlayerScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col){
 
         if (col.gameObject.tag == "House"){
-             Application.LoadLevel("YouWin");
+            Application.LoadLevel("YouWin");
         }
     }
 
@@ -68,22 +74,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (health <= 0){
            Application.LoadLevel("YouDied");
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position += Vector3.down * speed * Time.deltaTime;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using NDream.AirConsole;
+using UnityEngine.SceneManagement;
 
 public class SceneSwap : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class SceneSwap : MonoBehaviour
 
     void OnMessage(int fromDeviceId, JToken data)
     {
-        Debug.Log("Message from " + fromDeviceId + ", Data: " + data);
-        Application.LoadLevel(5);
-        AirConsole.instance.onMessage -= OnMessage;
+        if (SceneManager.GetActiveScene().name == "StartScreen") {
+          Application.LoadLevel(5);
+        }
     }
 }

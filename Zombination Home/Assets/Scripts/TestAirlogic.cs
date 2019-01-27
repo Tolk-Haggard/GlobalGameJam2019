@@ -13,7 +13,6 @@ public class TestAirlogic : MonoBehaviour
 
     void OnMessage(int fromDeviceId, JToken data)
     {
-        Debug.Log("Message from " + fromDeviceId + ", Data: " + data);
         if (data["action"] != null && data["action"].ToString().Equals("interact"))
         {
             Camera.main.backgroundColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));

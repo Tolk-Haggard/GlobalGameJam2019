@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     private GameObject target;
     public float speed;
-    private bool hitPlayer = false;
+    public bool hitPlayer = false;
 
     void Start()
     {
@@ -30,6 +30,11 @@ public class EnemyScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+
+       if (target.GetComponent<PlayerScript>() == null) {
+           target = GameObject.FindGameObjectWithTag("Player");
+       }
+
        if (!hitPlayer) {
            hitPlayer = true;
 

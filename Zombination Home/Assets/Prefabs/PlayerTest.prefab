@@ -123,10 +123,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   player: {fileID: 0}
-  speed: 15
+  speed: 5
   jump: 1
   WalkLeft: 0
   timer: 10
+  health: 6
 --- !u!50 &1535711012972110607
 Rigidbody2D:
   serializedVersion: 4
