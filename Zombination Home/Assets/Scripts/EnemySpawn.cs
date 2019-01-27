@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject [] enemy;
+    public Transform [] enemyStart;
+    int randomSpawnPoint;
+    int enemiesOnScreen;
+    int randomSpawnMonster;
 
     void Start()
-    {
-        Instantiate(enemy, new Vector3(Random.Range(-200, 200), Random.Range(-200, 200), 0), Quaternion.identity);
-    }
+    { }
+    
 
-    // Update is called once per frame
+
     void Update()
     {
         
+    }
+
+    void SpawnMonster()
+    {
+        randomSpawnMonster = Random.Range(0, enemy.Length);
+        randomSpawnPoint = Random.Range(0, enemyStart.Length);
+        Instantiate(enemy[randomSpawnMonster], enemyStart[randomSpawnPoint].position, enemyStart[randomSpawnPoint].rotation);
     }
 }
