@@ -34,6 +34,6 @@ public class EnemySpawn : MonoBehaviour
     {
         randomSpawnMonster = Random.Range(0, enemy.Length);
         randomSpawnPoint = Random.Range(0, enemyStart.Length);
-        Instantiate(enemy[randomSpawnMonster], enemyStart[randomSpawnPoint].position, enemyStart[randomSpawnPoint].rotation);
+        Instantiate(enemy[randomSpawnMonster], enemyStart[randomSpawnPoint].position, Quaternion.identity);
     }
 }
